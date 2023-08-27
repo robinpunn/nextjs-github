@@ -1,0 +1,75 @@
+#root {
+  display: grid;
+  grid-template-columns: 16.5rem 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+  "sidebar issues"
+  "sidebar issues";
+  column-gap: 10px;
+  row-gap: 10px;
+  height: 100vh;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  display: grid;
+  grid-template-rows: 0.5fr 3fr;
+  grid-template-areas:
+  "search"
+  "categories";
+  row-gap: 10px;
+}
+
+.search {
+  grid-area: search;
+  background-color: green;
+  /* Apply styles for the search bar */
+}
+
+.categories {
+  grid-area: categories;
+  background-color: beige;
+  /* Apply styles for the categories section */
+}
+
+.issues {
+  grid-area: issues;
+  background-color: purple;
+  /* Apply styles for the main content */
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
