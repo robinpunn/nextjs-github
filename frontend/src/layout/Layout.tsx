@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
-// import Navbar from "../navbar/index";
+import Sidebar from "../navigation/Sidebar";
+import Header from "../navigation/Header";
 // import styles from "../../styles/Home.module.css";
 
 interface LayoutProps {
@@ -9,10 +10,8 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <aside className="sidebar">
-        <section className="search"></section>
-        <section className="categories"></section>
-      </aside>
+      <Sidebar />
+      <Header />
       <main className="issues">{children}</main>
     </>
   );
