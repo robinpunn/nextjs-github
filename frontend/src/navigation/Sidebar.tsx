@@ -1,12 +1,18 @@
-import React from "react";
+import { forwardRef, ForwardRefRenderFunction } from "react";
 
 interface SidebarProps {
   sidebarOpen: boolean;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ sidebarOpen }) => {
+const Sidebar: ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
+  { sidebarOpen },
+  ref
+) => {
   return (
-    <aside className={`sidebar ${sidebarOpen ? "sidebar-responsive" : ""}`}>
+    <aside
+      ref={ref}
+      className={`sidebar ${sidebarOpen ? "sidebar-responsive" : ""}`}
+    >
       <section className="logo">
         <h2>Github Issues</h2>
       </section>
@@ -46,4 +52,4 @@ const Sidebar: React.FC<SidebarProps> = ({ sidebarOpen }) => {
   );
 };
 
-export default Sidebar;
+export default forwardRef(Sidebar);
