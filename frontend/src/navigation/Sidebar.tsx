@@ -2,10 +2,11 @@ import { forwardRef, ForwardRefRenderFunction } from "react";
 
 interface SidebarProps {
   sidebarOpen: boolean;
+  toggleSidebar: () => void;
 }
 
 const Sidebar: ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
-  { sidebarOpen },
+  { sidebarOpen, toggleSidebar },
   ref
 ) => {
   return (
@@ -15,6 +16,14 @@ const Sidebar: ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
     >
       <section className="logo">
         <h2>Github Issues</h2>
+        {sidebarOpen && (
+          <span
+            onClick={toggleSidebar}
+            className="close-icon material-symbols-outlined"
+          >
+            close
+          </span>
+        )}
       </section>
       <ul className="categories">
         <li className="category-item">

@@ -22,7 +22,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <>
-      <Sidebar sidebarOpen={sidebarOpen} ref={sidebarRef} />
+      <Sidebar
+        sidebarOpen={sidebarOpen}
+        toggleSidebar={toggleSidebar}
+        ref={sidebarRef}
+      />
       <Header toggleSidebar={toggleSidebar} />
       <main className="issues" onClick={handleOutsideClick}>
         {children}
