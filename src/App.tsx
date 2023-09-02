@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Octokit } from "octokit";
 import Layout from "./layout/Layout";
 import "./App.css";
@@ -9,38 +9,41 @@ const octokit = new Octokit({
 });
 
 function App() {
+  const [category, setCategory] = useState<string>("documentation");
+  const [issues, setIssues] = useState<any[]>([]);
+  const [key, setKey] = useState(0);
+
   useEffect(() => {
     searchOpenIssues();
-  }, []);
+  }, [category, key]);
 
   const searchOpenIssues = async () => {
     try {
+      const label = category.includes(" ") ? `"${category}"` : category;
       const response = await octokit.request("GET /search/issues", {
-        q: 'is:open+label:"good first issue"+label:blockchain',
+        q: `is:open+label:"good first issue"+label:${label}`,
         sort: "created",
         order: "desc",
         per_page: 100,
         page: 1,
       });
-      console.log(response);
+      const items = response.data.items;
+      // console.log(items[0].title, items[0].labels, items[0].html_url);
+      setIssues(items);
     } catch (error) {
       console.error("Error searching for an open issue", error);
     }
   };
 
+  const handleSetCategory = (category: string) => {
+    setCategory(category);
+    setKey((prevKey) => prevKey + 1);
+  };
+
   return (
     <>
-      <Layout>
-        <Issues />
-        <Issues />
-        <Issues />
-        <Issues />
-        <Issues />
-        <Issues />
-        <Issues />
-        <Issues />
-        <Issues />
-        <Issues />
+      <Layout setCategory={handleSetCategory}>
+        <Issues issues={issues} />
       </Layout>
     </>
   );

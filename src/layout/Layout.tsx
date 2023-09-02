@@ -4,9 +4,10 @@ import Header from "../navigation/Header";
 
 interface LayoutProps {
   children: ReactNode;
+  setCategory: (category: string) => void;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, setCategory }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
 
@@ -23,6 +24,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Sidebar
+        setCategory={setCategory}
         sidebarOpen={sidebarOpen}
         toggleSidebar={toggleSidebar}
         ref={sidebarRef}

@@ -14,7 +14,7 @@ const Header: React.FC<ToggleProps> = ({ toggleSidebar }) => {
           __html: '<span class="material-symbols-outlined">menu</span>',
         }}
       />
-      <h2>Github Issues</h2>
+      <h2>Good First Issues</h2>
     </header>
   );
 };

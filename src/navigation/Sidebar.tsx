@@ -3,10 +3,11 @@ import { forwardRef, ForwardRefRenderFunction } from "react";
 interface SidebarProps {
   sidebarOpen: boolean;
   toggleSidebar: () => void;
+  setCategory: (category: string) => void;
 }
 
 const Sidebar: ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
-  { sidebarOpen, toggleSidebar },
+  { sidebarOpen, toggleSidebar, setCategory },
   ref
 ) => {
   return (
@@ -26,34 +27,54 @@ const Sidebar: ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
       </section>
       <ul className="categories">
         <li className="category-item">
-          <a href="#">First Issue</a>
+          <a href="#" onClick={() => setCategory("quick fix")}>
+            Quick Fix
+          </a>
         </li>
         <li className="category-item">
-          <a href="#">Frontend</a>
+          <a href="#" onClick={() => setCategory("frontend")}>
+            Frontend
+          </a>
         </li>
         <li className="category-item">
-          <a href="#">Backend</a>
+          <a href="#" onClick={() => setCategory("backend")}>
+            Backend
+          </a>
         </li>
         <li className="category-item">
-          <a href="#">Blockchain</a>
+          <a href="#" onClick={() => setCategory("blockchain")}>
+            Blockchain
+          </a>
         </li>
         <li className="category-item">
-          <a href="#">Bug Reports</a>
+          <a href="#" onClick={() => setCategory("web3")}>
+            Web3
+          </a>
         </li>
         <li className="category-item">
-          <a href="#">Help Wanted</a>
+          <a href="#" onClick={() => setCategory("bug")}>
+            Bug
+          </a>
         </li>
         <li className="category-item">
-          <a href="#">Research Needed</a>
+          <a href="#" onClick={() => setCategory("research")}>
+            Research
+          </a>
         </li>
         <li className="category-item">
-          <a href="#">Refactoring</a>
+          <a href="#" onClick={() => setCategory("refactoring")}>
+            Refactoring
+          </a>
         </li>
         <li className="category-item">
-          <a href="#">Up-for-Grabs</a>
+          <a href="#" onClick={() => setCategory("help")}>
+            Help
+          </a>
         </li>
         <li className="category-item">
-          <a href="#">Documentation</a>
+          <a href="#" onClick={() => setCategory("documentation")}>
+            Documentation
+          </a>
         </li>
       </ul>
     </aside>
