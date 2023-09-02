@@ -12,12 +12,14 @@ function App() {
   const [category, setCategory] = useState<string>("documentation");
   const [issues, setIssues] = useState<any[]>([]);
   const [key, setKey] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     searchOpenIssues();
   }, [category, key]);
 
   const searchOpenIssues = async () => {
+    setIsLoading(true);
     try {
       const label = category.includes(" ") ? `"${category}"` : category;
       const response = await octokit.request("GET /search/issues", {
@@ -33,17 +35,19 @@ function App() {
     } catch (error) {
       console.error("Error searching for an open issue", error);
     }
+    setIsLoading(false);
   };
 
   const handleSetCategory = (category: string) => {
     setCategory(category);
     setKey((prevKey) => prevKey + 1);
+    window.scrollTo(0, 0);
   };
 
   return (
     <>
-      <Layout setCategory={handleSetCategory}>
-        <Issues issues={issues} />
+      <Layout setCategory={handleSetCategory} category={category}>
+        {isLoading ? <h3>Loading ...</h3> : <Issues issues={issues} />}
       </Layout>
     </>
   );

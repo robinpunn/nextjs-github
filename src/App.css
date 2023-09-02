@@ -59,9 +59,25 @@
   text-align: left;
 }
 
-.category-item:hover {
+.category-item:hover{
   background-color: rgba(255,255,255,0.2);
   cursor: pointer;
+  color: aliceblue;
+}
+
+.category-item > a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+.active {
+  background-color: rgba(255,255,255,0.5);
+  font-weight: bold;
+}
+
+.active .category-link {
+  color: rgb(255, 255, 255);
 }
 
 .close-icon {
@@ -101,24 +117,39 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
+  text-align: left;
   overflow-y: scroll;
 }
 
 .issue {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: center;
-  text-align: center;
   /* height: 23rem;
   min-width: 18rem; */
-  width: 75%;
+  width: 90%;
   margin: 1rem;
   padding: 0.5rem;
   border-radius: 1rem;
   background: rgba(52, 50, 50, 0.55);
-  box-shadow: 0 0 1rem #cfe2cfaa;
+  box-shadow: 0 0 1rem #000000aa;
   transition: all 0.5s ease-in-out;
+}
+
+.labels {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.label {
+  margin: 0.5rem;
+  border-radius: 2rem;
+  padding: 0.25rem;
+  min-width: 3rem;
+  text-align: center;
+  background-color: white;
 }
 
 /* ----- Blur ----- */
@@ -167,6 +198,6 @@
   }
 
   .issue {
-    width: 40%;
+    width: 50%;
   }
 }
