@@ -15,7 +15,6 @@ const Sidebar: ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
       className={`sidebar ${sidebarOpen ? "sidebar-responsive" : ""}`}
     >
       <section className="logo">
-        <h2>Github Issues</h2>
         {sidebarOpen && (
           <span
             onClick={toggleSidebar}
